@@ -23,7 +23,7 @@ The purpose of this project is to develop models that are able to predict the us
 Amazon product data:  
 http://jmcauley.ucsd.edu/data/amazon/
       
-We’ll use 5-core dataset of books, which is subset of the data in which all users and items have at least 5 reviews.    
+We’ll use 5-core dataset of Clothing and Shoes, which is subset of the data in which all users and items have at least 5 reviews.    
 
 ## IV. APPROACH
 1. Data preparation
