@@ -17,6 +17,8 @@ However, many product reviews (from other platforms than Amazon) are not accompa
 The purpose of this project is to develop models that are able to predict the user rating from the text review. While our model is built to work with any kind of product, the review dataset provided by Amazon only includes Clothing and Shoes reviews.
  
 ## II. Deeper dive into the data set
+We get dataset from Amazon product data, which contains product reviews and metadata from Amazon, including 142.8 million reviews spanning May 1996 ~ July 2014. The dataset includes reviews (ratings, text, helpfulness votes), product metadata (descriptions, category information, price, brand, and image features), and links (also viewed/also bought graphs).
+
 In this project, we use 5-core dataset of Clothing and Shoes, which is subset of the data in which all users and items have at least 5 reviews.  
 
 Sample review is as following:
@@ -30,6 +32,9 @@ Sample review is as following:
 	"summary": "Heavenly Highway Hymns",  
 	"unixReviewTime": 1252800000,  
 	"reviewTime": "09 13, 2009"  
+
+
+
 
 ## IV. APPROACH
 1. Data preparation
