@@ -20,7 +20,7 @@ The purpose of this project is to develop models that are able to predict the us
 In this project, we use 5-core dataset of Clothing and Shoes, which is subset of the data in which all users and items have at least 5 reviews.  
 
 Sample review is as following:  
-        "reviewerID": "A2SUAM1J3GNN3B",  
+      > "reviewerID": "A2SUAM1J3GNN3B",  
 	"asin": "0000013714",  
 	"reviewerName": "J. McDonald",  
 	"helpful": [2, 3],  
