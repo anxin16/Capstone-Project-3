@@ -21,8 +21,8 @@ In this project, we use 5-core dataset of Clothing and Shoes, which is subset of
 
 Sample review is as following:  
        
-       "reviewerID": "A2SUAM1J3GNN3B",  
-	"asin": "0000013714",  
+        "__reviewerID__": "A2SUAM1J3GNN3B",  
+	"__asin__": "0000013714",  
 	"reviewerName": "J. McDonald",  
 	"helpful": [2, 3],  
 	"reviewText": "I bought this for my husband who plays the piano.  He is having a wonderful time playing these old hymns.  The music  is at times hard to read because we think the book was published for singing from more than playing from.  Great purchase though!",  
