@@ -12,18 +12,23 @@ Nowadays, a massive amount of reviews is available online. Besides offering a va
 
 In their research process, consumers want to find useful information as quickly as possible. However, searching and comparing text reviews can be frustrating for users. Indeed, the massive amount of text reviews as well as its unstructured text format prevent the user from choosing a product with ease. The star-rating, i.e. stars from 1 to 5 on Amazon, rather than its text content gives a quick overview of the product quality. This numerical information is the No. 1 factor used in an early phase by consumers to compare products before making their purchase decision.
 
-In this study, I will develop a model to predict ratings from Amazon reviews.
-
-## II. PURPOSE
-Many product reviews (from other platforms than Amazon) are not accompanied by a scale rating system, consisting only of a textual evaluation. In this case, it becomes daunting and time-consuming to compare different products in order to eventually make a choice between them. Therefore, models able to predict the user rating from the text review are critically important. Getting an overall sense of a textual review could in turn improve consumer experience. Also, it can help business to increase sales, and improve the product by understanding customers' needs and pain-points.
+However, many product reviews (from other platforms than Amazon) are not accompanied by a scale rating system, consisting only of a textual evaluation. In this case, it becomes daunting and time-consuming to compare different products in order to eventually make a choice between them. Therefore, models able to predict the user rating from the text review are critically important. Getting an overall sense of a textual review could in turn improve consumer experience. Also, it can help business to increase sales, and improve the product by understanding customers' needs and pain-points.
 
 The purpose of this project is to develop models that are able to predict the user rating from the text review. While our model is built to work with any kind of product, the review dataset provided by Amazon only includes Clothing and Shoes reviews.
  
-## III. Data-Source
-Amazon product data:  
-http://jmcauley.ucsd.edu/data/amazon/
-      
-We’ll use 5-core dataset of books, which is subset of the data in which all users and items have at least 5 reviews.    
+## II. Deeper dive into the data set
+In this project, we use 5-core dataset of Clothing and Shoes, which is subset of the data in which all users and items have at least 5 reviews.  
+
+Sample review is as following:  
+	"reviewerID": "A2SUAM1J3GNN3B",  
+	"asin": "0000013714",  
+	"reviewerName": "J. McDonald",  
+	"helpful": [2, 3],  
+	"reviewText": "I bought this for my husband who plays the piano.  He is having a wonderful time playing these old hymns.  The music  is at times hard to read because we think the book was published for singing from more than playing from.  Great purchase though!",  
+	"overall": 5.0,  
+	"summary": "Heavenly Highway Hymns",  
+	"unixReviewTime": 1252800000,  
+	"reviewTime": "09 13, 2009"  
 
 ## IV. APPROACH
 1. Data preparation
