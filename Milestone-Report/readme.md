@@ -34,7 +34,14 @@ Sample review is as following:
 	"reviewTime": "09 13, 2009"  
 
 ### 1. Preparing Amazon dataset
-First we load dataset from json file and rename column 'overall' to 'Rating'. There are 278677 records in the Clothing and Shoes dataset. 
+First we load dataset from json file and rename column 'overall' to 'Rating'. 
+```python
+review_df = pd.read_json('Amazon_reviews/Clothing_Shoes_and_Jewelry_5.json', orient='records', lines=True)
+
+# change column name 
+review_df = review_df.rename(columns={'overall': 'Rating'})
+```
+There are 278677 records in the Clothing and Shoes dataset. 
 
 ### 2. Preliminary Analysis
 * __Summary of the dataset:__
@@ -54,6 +61,23 @@ Average rating score:  4.245
 
 * __Distribution of rating propotion__
 ![rating-pro](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-pro1.png)
+
+* __Subset data__
+Because NLP is very time cosumming, we just use subset of the dataset to go through our process of text normalization, feature engineering and machine learning. When all are set, we can use whole dataset or other bigger dataset.
+
+So we select reviews before 2012 as our sub dataset. There are 16434 records in it. 
+
+Distribution of the ratings is as following:
+```
+Rating
+1      690
+2      861
+3     1518
+4     3363
+5    10002
+```
+
+
 
 ## IV. APPROACH
 1. Data preparation
