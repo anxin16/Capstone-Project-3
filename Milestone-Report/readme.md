@@ -57,12 +57,15 @@ Prop of unique products:  0.083
 Average rating score:  4.245  
 ```
 * __Distribution of rating score__
+
 ![rating-fr](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-fr.png)
 
 * __Distribution of rating propotion__
+
 ![rating-pro](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-pro1.png)
 
 * __Subset data__
+
 Because NLP is very time cosumming, we just use subset of the dataset to go through our process of text normalization, feature engineering and machine learning. When all are set, we can use whole dataset or other bigger dataset.
 
 So we select reviews before 2012 as our sub dataset. There are 16434 records in it. 
