@@ -392,5 +392,15 @@ def tfidf_weighted_averaged_word_vectorizer(corpus, tfidf_vectors,
 
 ```
 
+## V. APPROACH
+1. Data preparation
+2. Data Wrangling
+3. Descriptive analysis
+4. Feature engineering
+5. Modeling and Machine learning
+6. Data Story
+
+## VI. DELIVERABLES
+Code, paper, slides
 ## V. DELIVERABLES
 Code, paper, slides
