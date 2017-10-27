@@ -283,10 +283,110 @@ In ML terminology, features are unique, measurable attributes or properties for 
 
 The *Vector Space Model* is a concept and model that is very useful in case we are dealing with textual data and is very popular in information retrieval and document ranking. The Vector Space Model, also known as the *Term Vector Model*, is defined as a mathematical and algebraic model for transforming and representing text documents as numeric vectors of specific terms that form the vector dimensions.
 
-We will be talking about and implementing the following feature-extraction techniques:
-•	 Bag of Words model
-•	 TF-IDF model
-•	 Advanced word vectorization models
+We will be implementing the following feature-extraction techniques in this project:  
+• Bag of Words model  
+• TF-IDF model  
+• Averaged Word Vectors  
+• TF-IDF Weighted Averaged Word Vectors   
+
+### 1. Bag of Words Model
+The Bag of Words model is perhaps one of the simplest yet most powerful techniques to extract features from text documents. The essence of this model is to convert text documents into vectors such that each document is converted into a vector that
+represents the frequency of all the distinct words that are present in the document vector space for that specific document. 
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+
+def bow_extractor(corpus, ngram_range=(1,1)):
+    vectorizer = CountVectorizer(min_df=1, ngram_range=ngram_range, max_features = 5000)
+    features = vectorizer.fit_transform(corpus)
+    return vectorizer, features
+```
+
+### 2. TF-IDF Model
+TF-IDF stands for Term Frequency-Inverse Document Frequency, a combination of two metrics: *term frequency* and *inverse document frequency*.
+
+Mathematically, TF-IDF is the product of two metrics and can be represented as $tfidf = tfxidf$, where *term frequency*(tf) and *inverse-document frequency*(idf) represent the two metrics.
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Define function to directly compute the tfidf-based feature vectors for documents from the raw documents.
+def tfidf_extractor(corpus, ngram_range=(1,1)):
+    vectorizer = TfidfVectorizer(min_df=1,
+                                 norm='l2',
+                                 smooth_idf=True,
+                                 use_idf=True,
+                                 ngram_range=ngram_range,
+                                 max_features = 5000)
+    features = vectorizer.fit_transform(corpus)
+    return vectorizer, features
+```
+
+### 3. Averaged Word Vectors
+In this technique, we will use an average weighted word vectorization scheme, where for each text document we will extract all the tokens of the text document, and for each token in the document we will capture the subsequent word vector if present in the vocabulary. We will sum up all the word vectors and divide the result by the total number of words matched in the vocabulary to get a final resulting averaged word vector representation for the text document.
+```python
+import numpy as np    
+
+# Define function to average word vectors for a text document
+def average_word_vectors(words, model, vocabulary, num_features):
+    
+    feature_vector = np.zeros((num_features,),dtype="float64")
+    nwords = 0.
+    
+    for word in words:
+        if word in vocabulary: 
+            nwords = nwords + 1.
+            feature_vector = np.add(feature_vector, model[word])
+    
+    if nwords:
+        feature_vector = np.divide(feature_vector, nwords)
+        
+    return feature_vector
+```
+```python
+# Generalize above function for a corpus of documents  
+def averaged_word_vectorizer(corpus, model, num_features):
+    vocabulary = set(model.index2word)
+    features = [average_word_vectors(sentence, model, vocabulary, num_features) for sentence in corpus]
+    return np.array(features)
+```
+
+### 4. TF-IDF Weighted Averaged Word Vectors
+Our previous vectorizer simply sums up all the word vectors pertaining to any document based on the words in the model vocabulary and calculates a simple average by dividing with the count of matched words. Now we use a new and novel technique of weighing each matched word vector with the word TF-TDF score and summing up all the word vectors for a document and dividing it by the sum of all the TF-IDF weights of the matched words in the document. This would basically give us a TF-IDF weighted averaged word vector for each document.
+```python
+# Define function to compute tfidf weighted averaged word vector for a document
+def tfidf_wtd_avg_word_vectors(words, tfidf_vector, tfidf_vocabulary, model, num_features):
+    
+    word_tfidfs = [tfidf_vector[0, tfidf_vocabulary.get(word)] 
+                   if tfidf_vocabulary.get(word) 
+                   else 0 for word in words]    
+    word_tfidf_map = {word:tfidf_val for word, tfidf_val in zip(words, word_tfidfs)}
+    
+    feature_vector = np.zeros((num_features,),dtype="float64")
+    vocabulary = set(model.index2word)
+    wts = 0.
+    for word in words:
+        if word in vocabulary: 
+            word_vector = model[word]
+            weighted_word_vector = word_tfidf_map[word] * word_vector
+            wts = wts + word_tfidf_map[word]
+            feature_vector = np.add(feature_vector, weighted_word_vector)
+    if wts:
+        feature_vector = np.divide(feature_vector, wts)
+        
+    return feature_vector
+```
+```python
+# Generalize above function for a corpus of documents
+def tfidf_weighted_averaged_word_vectorizer(corpus, tfidf_vectors, 
+                                   tfidf_vocabulary, model, num_features):
+                                       
+    docs_tfidfs = [(doc, doc_tfidf) 
+                   for doc, doc_tfidf 
+                   in zip(corpus, tfidf_vectors)]
+    features = [tfidf_wtd_avg_word_vectors(tokenized_sentence, tfidf, tfidf_vocabulary,
+                                   model, num_features)
+                    for tokenized_sentence, tfidf in docs_tfidfs]
+    return np.array(features) 
+```
 
 ```python
 
