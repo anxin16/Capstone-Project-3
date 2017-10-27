@@ -66,7 +66,7 @@ Average rating score:  4.245
 
 * __Subset data__
 
-Because NLP is very time cosumming, we just use subset of the dataset to go through our process of text normalization, feature engineering and machine learning. When all are set, we can use whole dataset or other bigger dataset.
+Because text analysis is very time cosumming, we just use subset of the dataset to go through our process of text normalization, feature engineering and machine learning. When all are set, we can use whole dataset or other bigger dataset to get better model.
 
 So we select reviews before 2012 as our sub dataset. There are 16434 records in it. 
 
@@ -80,15 +80,109 @@ Rating
 5    10002
 ```
 
+## III. Pre-processing —— Text Normalization
+For natural language processing (NLP) and text analytics, pre-processing is very important. To carry out different operations and analyze text, we need to process and parse textual data into more easy-to-interpret formats. All machine learning (ML) algorithms usually work with input features that are numeric in nature. To get to that, we need to clean, normalize, and pre-process the initial textual data. 
+
+Usually text corpora and other textual data in their native raw format are not well formatted and standardized. And text data is highly unstructured! Text pre-processing, involves using a variety of techniques to convert raw text into well-defined sequences of linguistic components that have standard structure and notation.
+
+Text normalization is defined as a process that consists of a series of steps that should be followed to wrangle, clean, and standardize textual data into a form that could be consumed by other NLP and analytics systems and applications as input. Besides tokenization, various other techniques include cleaning text, case conversion, correcting spellings, removing stopwords and other unnecessary terms, stemming, and lemmatization. Text normalization is also often called text cleansing or wrangling.
+
+Below are various techniques used in the process of text normalization:
+
+* Cleaning Text
+* Tokenizing Text
+* Removing Special Characters
+* Expanding Contractions
+* Case Conversions
+* Removing Stopwords
+* Correcting Words
+* Stemming
+* Lemmatization
+
+We will use most of the techniques in this project.
+
+### 1. Expanding Contractions
+Contractions are shortened version of words or syllables. They exist in either written or spoken forms. Shortened versions of existing words are created by removing specific letters and sounds. In case of English contractions, they are often created by removing one of the vowels from the word.
+
+By nature, contractions do pose a problem for NLP and text analytics because, to start with, we have a special apostrophe character in the word. Ideally, we can have a proper mapping for contractions and their corresponding expansions and then use it to expand all the contractions in our text. 
+```python
+from contractions import CONTRACTION_MAP
+
+# Define function to expand contractions
+def expand_contractions(text):
+    contractions_pattern = re.compile('({})'.format('|'.join(CONTRACTION_MAP.keys())),flags=re.IGNORECASE|re.DOTALL)
+    def expand_match(contraction):
+        match = contraction.group(0)
+        first_char = match[0]
+        expanded_contraction = CONTRACTION_MAP.get(match)\
+                        if CONTRACTION_MAP.get(match)\
+                        else CONTRACTION_MAP.get(match.lower())
+        expanded_contraction = first_char+expanded_contraction[1:]
+        return expanded_contraction
+    
+    expanded_text = contractions_pattern.sub(expand_match, text)
+    expanded_text = re.sub("'", "", expanded_text)
+    return expanded_text
+```
+
+### 2. Removing Special Characters
+One important task in text normalization involves removing unnecessary and special characters. These may be special symbols or even punctuation that occurs in sentences. This step is often performed before or after tokenization. The main reason for doing so is because often punctuation or special characters do not have much significance when we analyze the text and utilize it for extracting features or information based on NLP and ML.
+```python
+# Define the function to remove special characters
+def remove_characters(text):
+    text = text.strip()
+    PATTERN = '[^a-zA-Z0-9 ]' # only extract alpha-numeric characters
+    filtered_text = re.sub(PATTERN, '', text)
+    return filtered_text
+```
+
+### 3. Tokenizing Text
+Tokenization can be defined as the process of breaking down or splitting textual data into smaller meaningful components called tokens.
+
+**Sentence tokenization** is the process of splitting a text corpus into sentences that act as the first level of tokens which the corpus is comprised of. This is also known as sentence segmentation , because we try to segment the text into meaningful sentences.
+
+**Word tokenization** is the process of splitting or segmenting sentences into their constituent words. A sentence is a collection of words, and with tokenization we essentially split a sentence into a list of words that can be used to reconstruct the sentence.
+```python
+# Define the tokenization function
+def tokenize_text(text):
+    word_tokens = nltk.word_tokenize(text)
+    tokens = [token.strip() for token in word_tokens]
+    return tokens
+```
+
+### 4. Removing Stopwords
+Stopwords are words that have little or no significance. They are usually removed from text during processing so as to retain words having maximum significance and context. Stopwords are usually words that end up occurring the most if you aggregated any corpus of text based on singular tokens and checked their frequencies. Words like a, the , me , and so on are stopwords.
+```python
+from nltk.corpus import stopwords
+# In Python, searching a set is much faster than searching a list, 
+# so convert the stop words to a set
+stopword_list = set(stopwords.words("english"))
+
+# Define function to remove stopwords
+def remove_stopwords(tokens):
+    filtered_tokens = [token for token in tokens if token not in stopword_list]
+    return filtered_tokens
+```
+
+### 5. Correcting Words
+One of the main challenges faced in text normalization is the presence of incorrect words in the text. The definition of incorrect here covers words that have spelling mistakes as well as words with several letters repeated that do not contribute much to its overall significance.
 
 
-## IV. APPROACH
-1. Data preparation
-2. Data Wrangling
-3. Descriptive analysis
-4. Feature engineering
-5. Modeling and Machine learning
-6. Data Story
+```python
+
+```
+
+```python
+
+```
+
+```python
+
+```
+
+```python
+
+```
 
 ## V. DELIVERABLES
 Code, paper, slides
