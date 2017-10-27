@@ -167,13 +167,92 @@ def remove_stopwords(tokens):
 ### 5. Correcting Words
 One of the main challenges faced in text normalization is the presence of incorrect words in the text. The definition of incorrect here covers words that have spelling mistakes as well as words with several letters repeated that do not contribute much to its overall significance.
 
-
+**5.1 Correcting Repeating Characters**
 ```python
+from nltk.corpus import wordnet
 
+# Define function to remove repeated characters
+def remove_repeated_characters(tokens):
+    repeat_pattern = re.compile(r'(\w*)(\w)\2(\w*)')
+    match_substitution = r'\1\2\3'
+    def replace(old_word):
+        if wordnet.synsets(old_word):
+            return old_word
+        new_word = repeat_pattern.sub(match_substitution, old_word)
+        return replace(new_word) if new_word != old_word else new_word
+
+    correct_tokens = [replace(word) for word in tokens]
+    return correct_tokens
 ```
 
+**5.2 Correcting Spellings**
 ```python
+from collections import Counter
 
+# Generate a map of frequently occurring words in English and their counts
+"""
+The input corpus we use is a file containing several books from the Gutenberg corpus and also 
+a list of most frequent words from Wiktionary and the British National Corpus. You can find 
+the file under the name big.txt or download it from http://norvig.com/big.txt and use it.
+"""
+def tokens(text):
+    """
+    Get all words from the corpus
+    """
+    return re.findall('[a-z]+', text.lower())
+
+WORDS = tokens(open('big.txt').read())
+WORD_COUNTS = Counter(WORDS)
+```
+```python
+# Define functions that compute sets of words that are one and two edits away from input word.
+def edits1(word):
+    "All edits that are one edit away from `word`."
+    letters    = 'abcdefghijklmnopqrstuvwxyz'
+    splits     = [(word[:i], word[i:])    for i in range(len(word) + 1)]
+    deletes    = [L + R[1:]               for L, R in splits if R]
+    transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R)>1]
+    replaces   = [L + c + R[1:]           for L, R in splits if R for c in letters]
+    inserts    = [L + c + R               for L, R in splits for c in letters]
+    return set(deletes + transposes + replaces + inserts)
+
+def edits2(word): 
+    "All edits that are two edits away from `word`."
+    return (e2 for e1 in edits1(word) for e2 in edits1(e1))
+```
+```python
+# Define function that returns a subset of words from our candidate set of words obtained from 
+# the edit functions, based on whether they occur in our vocabulary dictionary WORD_COUNTS.
+# This gives us a list of valid words from our set of candidate words.
+def known(words): 
+    "The subset of `words` that appear in the dictionary of WORD_COUNTS."
+    return set(w for w in words if w in WORD_COUNTS)
+```
+```python
+# Define function to correct words
+def correct(words):
+    # Get the best correct spellings for the input words
+    def candidates(word): 
+        # Generate possible spelling corrections for word.
+        # Priority is for edit distance 0, then 1, then 2, else defaults to the input word itself.
+        candidates = known([word]) or known(edits1(word)) or known(edits2(word)) or [word]
+        return candidates
+    
+    corrected_words = [max(candidates(word), key=WORD_COUNTS.get) for word in words]
+    return corrected_words
+```
+
+### 6. Lemmatization
+The process of lemmatization is to remove word affixes to get to a base form of the word. The base form is also known as the root word, or the lemma, will always be present in the dictionary.
+```python
+import spacy
+nlp = spacy.load("en")
+
+# Define function for Lemmatization
+def Lemmatize_tokens(tokens):
+    doc = ' '.join(tokens)
+    Lemmatized_tokens = [token.lemma_ for token in nlp(doc)]
+    return Lemmatized_tokens
 ```
 
 ```python
