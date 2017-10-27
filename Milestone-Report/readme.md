@@ -38,17 +38,17 @@ First we load dataset from json file and rename column 'overall' to 'Rating'. Th
 
 ### 2. Preliminary Analysis
 Then we get a summary of the dataset:
-'''
-Number of reviews:  278677
+```
+Number of reviews:  278677  
 
-Number of unique reviewers:  39387
-Prop of unique reviewers:  0.141
+Number of unique reviewers:  39387  
+Prop of unique reviewers:  0.141  
 
-Number of unique products:  23033
-Prop of unique products:  0.083
+Number of unique products:  23033  
+Prop of unique products:  0.083  
 
-Average rating score:  4.245
-'''
+Average rating score:  4.245  
+```
 
 
 ## IV. APPROACH
