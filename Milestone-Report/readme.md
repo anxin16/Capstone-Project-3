@@ -284,10 +284,10 @@ In ML terminology, features are unique, measurable attributes or properties for 
 The *Vector Space Model* is a concept and model that is very useful in case we are dealing with textual data and is very popular in information retrieval and document ranking. The Vector Space Model, also known as the *Term Vector Model*, is defined as a mathematical and algebraic model for transforming and representing text documents as numeric vectors of specific terms that form the vector dimensions.
 
 We will be implementing the following feature-extraction techniques in this project:  
-• Bag of Words model  
-• TF-IDF model  
-• Averaged Word Vectors  
-• TF-IDF Weighted Averaged Word Vectors   
+  • Bag of Words model  
+  • TF-IDF model  
+  • Averaged Word Vectors  
+  • TF-IDF Weighted Averaged Word Vectors   
 
 ### 1. Bag of Words Model
 The Bag of Words model is perhaps one of the simplest yet most powerful techniques to extract features from text documents. The essence of this model is to convert text documents into vectors such that each document is converted into a vector that
