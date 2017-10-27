@@ -37,7 +37,7 @@ Sample review is as following:
 First we load dataset from json file and rename column 'overall' to 'Rating'. There are 278677 records in the Clothing and Shoes dataset. 
 
 ### 2. Preliminary Analysis
-* Summary of the dataset:
+* __Summary of the dataset:__
 ```
 Number of reviews:  278677  
 
@@ -49,11 +49,11 @@ Prop of unique products:  0.083
 
 Average rating score:  4.245  
 ```
-* Distribution of rating score
+* __Distribution of rating score__
 ![rating-fr](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-fr.png)
 
-* Distribution of rating propotion
-![rating-pro](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-pro.png)
+* __Distribution of rating propotion__
+![rating-pro](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-pro1.png)
 
 ## IV. APPROACH
 1. Data preparation
