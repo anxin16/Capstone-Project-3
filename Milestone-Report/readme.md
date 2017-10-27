@@ -255,9 +255,29 @@ def Lemmatize_tokens(tokens):
     return Lemmatized_tokens
 ```
 
+### 7. Text Normalization
 ```python
-
+def normalize_corpus(corpus):
+    normalized_corpus = []    
+    for text in corpus:
+        text = text.lower()
+        text = expand_contractions(text)
+        text = remove_characters(text)
+        tokens = tokenize_text(text)
+        tokens = remove_stopwords(tokens)
+        tokens = remove_repeated_characters(tokens)
+        tokens = correct(tokens)
+        tokens = Lemmatize_tokens(tokens)
+        text = ' '.join(tokens)
+        normalized_corpus.append(text)
+                    
+    return normalized_corpus
 ```
+
+After above steps, we get normalized texts of Amazon reviews. 
+
+## IV. Feature Engeering
+
 
 ```python
 
