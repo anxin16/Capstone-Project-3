@@ -281,6 +281,13 @@ After above steps, we get normalized texts of Amazon reviews.
 
 In ML terminology, features are unique, measurable attributes or properties for each observation or data point in a dataset. Features are usually numeric in nature and can be absolute numeric values or categorical features that can be encoded as binary features for each category in the list using a process called one-hot encoding. The process of extracting and selecting features is both art and science, and this process is called *feature extraction* or *feature engineering*.
 
+The *Vector Space Model* is a concept and model that is very useful in case we are dealing with textual data and is very popular in information retrieval and document ranking. The Vector Space Model, also known as the *Term Vector Model*, is defined as a mathematical and algebraic model for transforming and representing text documents as numeric vectors of specific terms that form the vector dimensions.
+
+We will be talking about and implementing the following feature-extraction techniques:
+•	 Bag of Words model
+•	 TF-IDF model
+•	 Advanced word vectorization models
+
 ```python
 
 ```
