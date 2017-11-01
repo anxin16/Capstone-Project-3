@@ -402,5 +402,3 @@ def tfidf_weighted_averaged_word_vectorizer(corpus, tfidf_vectors,
 
 ## VI. DELIVERABLES
 Code, paper, slides
-## V. DELIVERABLES
-Code, paper, slides
