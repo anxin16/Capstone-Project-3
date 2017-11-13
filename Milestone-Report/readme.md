@@ -276,7 +276,7 @@ def normalize_corpus(corpus):
 
 After above steps, we get normalized texts of Amazon reviews. 
 
-## IV. Feature Engeering —— Feature Extraction 
+## IV. Feature Engineering —— Feature Extraction 
 **Feature engineering** is the process of using domain knowledge of the data to create features that make machine learning algorithms work. Feature engineering is fundamental to the application of machine learning, and is both difficult and expensive. 
 
 In ML terminology, features are unique, measurable attributes or properties for each observation or data point in a dataset. Features are usually numeric in nature and can be absolute numeric values or categorical features that can be encoded as binary features for each category in the list using a process called one-hot encoding. The process of extracting and selecting features is both art and science, and this process is called *feature extraction* or *feature engineering*.
