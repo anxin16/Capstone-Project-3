@@ -344,7 +344,7 @@ def average_word_vectors(words, model, vocabulary, num_features):
 ```python
 # Generalize above function for a corpus of documents  
 def averaged_word_vectorizer(corpus, model, num_features):
-    vocabulary = set(model.index2word)
+    vocabulary = set(model.wv.index2word)
     features = [average_word_vectors(sentence, model, vocabulary, num_features) for sentence in corpus]
     return np.array(features)
 ```
@@ -361,7 +361,7 @@ def tfidf_wtd_avg_word_vectors(words, tfidf_vector, tfidf_vocabulary, model, num
     word_tfidf_map = {word:tfidf_val for word, tfidf_val in zip(words, word_tfidfs)}
     
     feature_vector = np.zeros((num_features,),dtype="float64")
-    vocabulary = set(model.index2word)
+    vocabulary = set(model.wv.index2word)
     wts = 0.
     for word in words:
         if word in vocabulary: 
