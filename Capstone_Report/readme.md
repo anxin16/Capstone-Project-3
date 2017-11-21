@@ -394,8 +394,43 @@ In this step, we need develop models to predict ratings from reviews with machin
 * Evaluation
 * Hyperparameter tuning
 
+Before develop and evaluate models, first we split data into train and test sets, then extract features of training and test data. Third, we prepare functions to train and evaluate models.
+```python
+from sklearn.metrics import accuracy_score, classification_report
 
+def get_metrics(true_labels, predicted_labels):
+    print ('Accuracy: ', accuracy_score(true_labels,predicted_labels))
+    print (classification_report(true_labels, predicted_labels))
+```
+```python
+def train_predict_evaluate_model(classifier, 
+                                 train_features, train_labels, 
+                                 test_features, test_labels):
+    # build model    
+    classifier.fit(train_features, train_labels)
+    # predict using model
+    train_predictions = classifier.predict(train_features)
+    test_predictions = classifier.predict(test_features) 
+    # evaluate model prediction performance 
+    print ('Training set performance:')
+    get_metrics(true_labels=train_labels, predicted_labels=train_predictions)
+    print ('Test set performance:')
+    get_metrics(true_labels=test_labels, predicted_labels=test_predictions)
+    return test_predictions    
+```
 
+### 1. Develop classification models
+There are various types of classification algorithms, but our focus remains on text classification. So we will touch upon a couple of algorithms that are quite effective for text classification. These algorithms are the following:
+
+**1.1 Logistic Regression**
+
+**1.2 Multinomial Naive Bayes**
+
+**1.3 Linear Support Vector Classification**
+
+**1.4 SGD Classifier**
+
+**1.5 Random Forest Classifier**
 
 
 
