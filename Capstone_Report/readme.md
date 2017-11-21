@@ -388,9 +388,41 @@ def tfidf_weighted_averaged_word_vectorizer(corpus, tfidf_vectors,
     return np.array(features) 
 ```
 
+## V. Modeling and Machine learning
+In this step, we need develop models to predict ratings from reviews with machine learning. Here we will use Classification Algorithms. Classification algorithms are supervised ML algorithms that are used to classify, categorize, or label data points based on what it has observed in the past. There are mainly three processes classification algorithms go through:
+* Training
+* Evaluation
+* Hyperparameter tuning
+
+
+
+
+
+
 ```python
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## V. APPROACH
 1. Data preparation
