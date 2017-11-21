@@ -419,16 +419,35 @@ def train_predict_evaluate_model(classifier,
     return test_predictions    
 ```
 
-### 1. Develop classification models
+### 1. Classification models
 There are various types of classification algorithms, but our focus remains on text classification. So we will touch upon a couple of algorithms that are quite effective for text classification. These algorithms are the following:
 
 **1.1 Logistic Regression**
+Logistic regression, despite its name, is a linear model for classification rather than regression. Logistic regression is also known in the literature as logit regression, maximum-entropy classification (MaxEnt) or the log-linear classifier. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function.
 
 **1.2 Multinomial Naive Bayes**
+Multinomial Naive Bayes  implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts). 
 
 **1.3 Linear Support Vector Classification**
+Linear Support Vector Classification is similar to SVC with parameter kernel=’linear’, but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.
 
 **1.4 SGD Classifier**
+__Stochastic Gradient Descent (SGD)__ is a simple yet very efficient approach to discriminative learning of linear classifiers under convex loss functions such as (linear) Support Vector Machines and Logistic Regression. Even though SGD has been around in the machine learning community for a long time, it has received a considerable amount of attention just recently in the context of large-scale learning.
+
+SGD has been successfully applied to large-scale and sparse machine learning problems often encountered in text classification and natural language processing. Given that the data is sparse, the classifiers in this module easily scale to problems with more than 10^5 training examples and more than 10^5 features.
+
+The advantages of Stochastic Gradient Descent are:
+	* Efficiency.
+	* Ease of implementation (lots of opportunities for code tuning).
+	
+The disadvantages of Stochastic Gradient Descent include:
+	* SGD requires a number of hyperparameters such as the regularization parameter and the number of iterations.
+	* SGD is sensitive to feature scaling.
+
+SGD Classifier is linear classifiers with SGD training. This estimator implements regularized linear models with stochastic gradient descent (SGD) learning: the gradient of the loss is estimated each sample at a time and the model is updated along the way with a decreasing strength schedule (aka learning rate). SGD allows minibatch (online/out-of-core) learning, see the partial_fit method. For best results using the default learning rate schedule, the data should have zero mean and unit variance.
+
+This implementation works with data represented as dense or sparse arrays of floating point values for the features. The model it fits can be controlled with the loss parameter; by default, it fits a linear support vector machine (SVM).
+The regularizer is a penalty added to the loss function that shrinks model parameters towards the zero vector using either the squared euclidean norm L2 or the absolute norm L1 or a combination of both (Elastic Net). If the parameter update crosses the 0.0 value because of the regularizer, the update is truncated to 0.0 to allow for learning sparse models and achieve online feature selection.
 
 **1.5 Random Forest Classifier**
 
