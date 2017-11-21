@@ -440,15 +440,13 @@ __Stochastic Gradient Descent (SGD)__ is a simple yet very efficient approach to
 
 SGD has been successfully applied to large-scale and sparse machine learning problems often encountered in text classification and natural language processing. Given that the data is sparse, the classifiers in this module easily scale to problems with more than 10^5 training examples and more than 10^5 features.
 
-The advantages of Stochastic Gradient Descent are:
-
-	* Efficiency.
-	* Ease of implementation (lots of opportunities for code tuning).
+The advantages of Stochastic Gradient Descent are:  
+* Efficiency.
+* Ease of implementation (lots of opportunities for code tuning).
 	
-The disadvantages of Stochastic Gradient Descent include:
-
-	* SGD requires a number of hyperparameters such as the regularization parameter and the number of iterations.
-	* SGD is sensitive to feature scaling.
+The disadvantages of Stochastic Gradient Descent include:  
+* SGD requires a number of hyperparameters such as the regularization parameter and the number of iterations.
+* SGD is sensitive to feature scaling.
 
 SGD Classifier is linear classifiers with SGD training. This estimator implements regularized linear models with stochastic gradient descent (SGD) learning: the gradient of the loss is estimated each sample at a time and the model is updated along the way with a decreasing strength schedule (aka learning rate). The model it fits can be controlled with the loss parameter; by default, it fits a linear support vector machine (SVM).
 
