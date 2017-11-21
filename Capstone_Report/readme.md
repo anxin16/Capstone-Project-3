@@ -394,30 +394,7 @@ In this step, we need develop models to predict ratings from reviews with machin
 * Evaluation
 * Hyperparameter tuning
 
-Before develop and evaluate models, first we split data into train and test sets, then extract features of training and test data. Third, we prepare functions to train and evaluate models.
-```python
-from sklearn.metrics import accuracy_score, classification_report
-
-def get_metrics(true_labels, predicted_labels):
-    print ('Accuracy: ', accuracy_score(true_labels,predicted_labels))
-    print (classification_report(true_labels, predicted_labels))
-```
-```python
-def train_predict_evaluate_model(classifier, 
-                                 train_features, train_labels, 
-                                 test_features, test_labels):
-    # build model    
-    classifier.fit(train_features, train_labels)
-    # predict using model
-    train_predictions = classifier.predict(train_features)
-    test_predictions = classifier.predict(test_features) 
-    # evaluate model prediction performance 
-    print ('Training set performance:')
-    get_metrics(true_labels=train_labels, predicted_labels=train_predictions)
-    print ('Test set performance:')
-    get_metrics(true_labels=test_labels, predicted_labels=test_predictions)
-    return test_predictions    
-```
+Before develop and evaluate models, first we split data into train and test sets, then extract all the necessary features of training and test data using the preceding feature extractors. 
 
 ### 1. Classification models
 There are various types of classification algorithms, but our focus remains on text classification. So we will touch upon a couple of algorithms that are quite effective for text classification. These algorithms are the following:
@@ -428,7 +405,7 @@ Logistic regression, despite its name, is a linear model for classification rath
 
 **1.2 Multinomial Naive Bayes**
 
-Multinomial Naive Bayes  implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts). 
+__Multinomial Naive Bayes__ implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts). This algorithm is a special case of the popular naïve Bayes algorithm, which is used specifically for prediction and classification tasks where we have more than two classes.
 
 **1.3 Linear Support Vector Classification**
 
@@ -471,10 +448,48 @@ clf_SGD = SGDClassifier()
 clf_RFC = RandomForestClassifier()
 ```
 
+### 2. Evaluating Classification Models
+Training and building models are an important part of the whole analytics lifecycle, but even more important is knowing how well these models are performing. Performance of classification models is usually based on how well they predict outcomes for new data points. Usually this performance is measured against a test or holdout dataset that consists of data points which was not used to influence or train the classifier in any way. This test dataset usually has several observations and corresponding labels.
 
+We extract features in the same way as it was followed when training the model. These features are fed to the already trained model, and we obtain predictions for each data point. These predictions are then matched with the actual labels to see how well or how accurately the model has predicted.
 
+Several metrics determine a model’s prediction performance, but we will mainly focus on the following metrics:  
+* Accuracy
+* Recall
 
+_Accuracy_ is defined as the overall accuracy or proportion of correct predictions of the model. We have our correct predictions in the numerator divided by all the outcomes in the denominator. 
 
+_Recall_ is defined as the number of instances of the positive class that were correctly predicted. This is also known as _hit rate_, _coverage_, or _sensitivity_. We have our correct predictions for the positive class in the numerator divided by
+correct and missed instances for the positive class, giving us the hit rate. This metric is good to check the hit rate of each category. 
+
+We use the metrics module from scikit-learn, which is very powerful and helps in computing these metrics with a single function.
+```python
+from sklearn.metrics import accuracy_score, classification_report
+
+def get_metrics(true_labels, predicted_labels):
+    print ('Accuracy: ', accuracy_score(true_labels,predicted_labels))
+    print (classification_report(true_labels, predicted_labels))
+```
+
+We defined a function that trains the model using a ML algorithm and the training data, performs predictions on the test data using the trained model, and then evaluates the predictions using the preceding function to give us the model performance:
+```python
+def train_predict_evaluate_model(classifier, 
+                                 train_features, train_labels, 
+                                 test_features, test_labels):
+    # build model    
+    classifier.fit(train_features, train_labels)
+    # predict using model
+    train_predictions = classifier.predict(train_features)
+    test_predictions = classifier.predict(test_features) 
+    # evaluate model prediction performance 
+    print ('Training set performance:')
+    get_metrics(true_labels=train_labels, predicted_labels=train_predictions)
+    print ('Test set performance:')
+    get_metrics(true_labels=test_labels, predicted_labels=test_predictions)
+    return test_predictions    
+```
+
+Now we train, predict, and evaluate above classification models for all the different types of features.
 
 ```python
 
