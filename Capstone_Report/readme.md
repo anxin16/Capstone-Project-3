@@ -489,9 +489,9 @@ def train_predict_evaluate_model(classifier,
     return test_predictions    
 ```
 
-Now we train, predict, and evaluate above classification models for all the different types of features. The following form is the result we get:  
+Now we train, predict, and evaluate above classification models for all the different types of features. The following form is the result we get:
 
-![Evaluate-result-form](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Evaluate-result-form.png)
+     ![Evaluate-result-form](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Evaluate-result-form.png)
 
 
 
