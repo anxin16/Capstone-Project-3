@@ -401,15 +401,15 @@ There are various types of classification algorithms, but our focus remains on t
 
 **1.1 Logistic Regression**
 
-Logistic regression, despite its name, is a linear model for classification rather than regression. Logistic regression is also known in the literature as logit regression, maximum-entropy classification (MaxEnt) or the log-linear classifier. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function.
+_Logistic regression_, despite its name, is a linear model for classification rather than regression. Logistic regression is also known in the literature as logit regression, maximum-entropy classification (MaxEnt) or the log-linear classifier. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function.
 
 **1.2 Multinomial Naive Bayes**
 
-__Multinomial Naive Bayes__ implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts). This algorithm is a special case of the popular naïve Bayes algorithm, which is used specifically for prediction and classification tasks where we have more than two classes.
+_Multinomial Naive Bayes_ implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts). This algorithm is a special case of the popular naïve Bayes algorithm, which is used specifically for prediction and classification tasks where we have more than two classes.
 
 **1.3 Linear Support Vector Classification**
 
-Linear Support Vector Classification is similar to SVC with parameter kernel=’linear’, but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.
+_Linear Support Vector Classification_ is similar to SVC with parameter kernel=’linear’, but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.
 
 **1.4 SGD Classifier**
 
@@ -429,7 +429,7 @@ SGD Classifier is linear classifiers with SGD training. This estimator implement
 
 **1.5 Random Forest Classifier**
 
-A random forest is a meta estimator that fits a number of decision tree classifiers on various sub-samples of the dataset and use averaging to improve the predictive accuracy and control over-fitting. The sub-sample size is always the same as the original input sample size but the samples are drawn with replacement if bootstrap=True (default).
+A _random forest_ is a meta estimator that fits a number of decision tree classifiers on various sub-samples of the dataset and use averaging to improve the predictive accuracy and control over-fitting. The sub-sample size is always the same as the original input sample size but the samples are drawn with replacement if bootstrap=True (default).
 
 In random forests, each tree in the ensemble is built from a sample drawn with replacement (i.e., a bootstrap sample) from the training set. In addition, when splitting a node during the construction of the tree, the split that is chosen is no longer the best split among all features. Instead, the split that is picked is the best split among a random subset of the features. As a result of this randomness, the bias of the forest usually slightly increases (with respect to the bias of a single non-random tree) but, due to averaging, its variance also decreases, usually more than compensating for the increase in bias, hence yielding an overall better model.
 
@@ -500,6 +500,25 @@ From the above form, we can get following results:
 4. The models marked in pink color are relatively best models. We will work on them with hyperparameter Tuning.
 
 ### 3. Confusion Matrix of Models
+A _confusion matrix_ is a table that is often used to describe the performance of a classification model (or "classifier") on a set of test data for which the true values are known. Each row of the matrix represents the instances in an actual class while each column represents the instances in a predicted class. The name stems from the fact that it makes it easy to see if the system is confusing two classes (i.e. commonly mislabelling one as another). 
+
+Followings are the confusion matrixs for the above marked models:
+
+**3.1 Logistic Regression using Bag of words features:**  
+    1   2    3    4     5
+1  54  42   19   20    79
+2  20  62   60   47   119
+3  21  45  129  155   219
+4   8  16   93  318   773
+5   9  11   77  245  3359
+
+**3.2 Logistic Regression with Tfidf features:**  
+    1   2   3    4     5
+1  32  28  27   21   106
+2  12  26  59   47   164
+3   3  19  99  161   287
+4   2   6  55  272   873
+5   0   4  21  157  3519
 
 ```python
 
