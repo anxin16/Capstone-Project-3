@@ -564,6 +564,60 @@ Followings are the confusion matrixs for the above marked models:
 4 | 19 | 36 | 84 | 313  | 756
 5 | 22 | 56 | 94 | 399 | 3130
 
+From the matrixes, we can see that many reviews of rating 1-4 are predicted as rating 5. This is the main reason for models' not high accuracy. 
+
+Next step, we will try Hyperparameter Tuning to improve the metrics of models.
+
+### 4. Hyperparameter Tuning
+
+**4.1 Hyperparameter**
+
+_Hyperparameters_ are parameters whose values are set prior to the commencement of the learning process. By contrast, the values of other parameters are derived via training. Different model training algorithms require different hyperparameters, some simple algorithms require none. Given these hyperparameters, the training algorithm learns the parameters from the data.
+
+Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. 
+
+**4.2 Hyperparameter tuning**
+
+Hyperparameter tuning is the problem of choosing a set of optimal hyperparameters for a learning algorithm. The same kind of machine learning model could require different constraints, weights or learning rates to generalize different data patterns. These measures are called hyperparameters, and have to be tuned so that the model can best solve the machine learning problem. Usually a metric is chosen to measure the algorithm's performance on an independent data set and hyperparameters that maximize this measure are adopted. Often cross-validation is used to estimate this generalization performance.
+
+Hyperparameter tuning is performed by searching the hyper-parameter space for the best cross validation score. A search consists of:  
+* an estimator (regressor or classifier);  
+* a parameter space;  
+* a method for searching or sampling candidates;  
+* a cross-validation scheme;   
+* a score function.  
+
+**4.3 Hyperparameter tuning approaches**
+
+Two generic approaches to sampling search candidates are provided in scikit-learn: for given values, GridSearchCV exhaustively considers all parameter combinations, while RandomizedSearchCV can sample a given number of candidates from a parameter space with a specified distribution. 
+
+In this project, we use the grid search provided by GridSearchCV exhaustively generates candidates from a grid of parameter values specified with the param_grid parameter. 
+```python
+from sklearn.model_selection import GridSearchCV
+
+def get_optimal_parameters(classifier, param_grid, 
+                    train_features, train_labels, 
+                    test_features, test_labels):
+    # Instantiate the GridSearchCV object
+    classifier_cv = GridSearchCV(classifier, param_grid, cv=5)
+    # build model    
+    classifier_cv.fit(train_features, train_labels)
+    # predict using model
+    test_predictions = classifier_cv.predict(test_features) 
+    print("Tuned Parameter: {}".format(classifier_cv.best_params_))
+    print("Tuned Score: {}".format(classifier_cv.best_score_))
+    print()
+    # evaluate model prediction performance 
+    print ('Test set performance:')
+    get_metrics(true_labels=test_labels, predicted_labels=test_predictions)
+    # Print the optimal parameters and best score
+    return classifier_cv
+```
+
+**4.4 Hyperparameter tuning result**
+
+
+
 ```python
 
 ```
@@ -589,13 +643,4 @@ Followings are the confusion matrixs for the above marked models:
 
 
 
-## V. APPROACH
-1. Data preparation
-2. Data Wrangling
-3. Descriptive analysis
-4. Feature engineering
-5. Modeling and Machine learning
-6. Data Story
 
-## VI. DELIVERABLES
-Code, paper, slides
