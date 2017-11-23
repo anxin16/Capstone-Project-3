@@ -616,7 +616,14 @@ def get_optimal_parameters(classifier, param_grid,
 
 **4.4 Hyperparameter tuning result**
 
-
+No. | Models | Accuracy before tuning | Accuracy after tuning | Improved accuracy
+--- | --- | --- | --- | ---
+1 | Logistic Regression using Bag of words features | 0.654 | 0.658 | 0.004
+2 | Logistic Regression with Tfidf features | 0.658 | 0.662 | 0.004
+3 | Multinomial Naive Bayes using Bag of words features | 0.637 | 0.636 | -0.001
+4 | Linear Support Vector Classification using Tfidf features | 0.655 | 0.662 | 0.007
+5 | SGD Classifier using Tfidf features | 0.655 | 0.657 | 0.002
+6 | Random Forest Classifier using Averaged word vector features | 0.600 | 0.637 | 0.037
 
 ```python
 
