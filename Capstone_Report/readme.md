@@ -628,7 +628,15 @@ No. | Models | Accuracy before tuning | Accuracy after tuning | Improved accurac
 From the tuning result, we can see that most models' accuracy are improved by 0.2~0.7%, especially for RFC, accuracy improved by 3.7%. So hyperparameter tuning is a good method to improve the models. Also, after hyperparameter tuning, we get 6 models with about 66% accuracy.
 
 ## VI. Results and Discussion
+In this project, we tried to develope models to predict Amazon review ratings from the review texts. Before training the models with machine learning methods, we performed Text Normalization and Feature Engineering to process natural language and extracte features for machine learning. Then we developed the models by using six cllasification models with four different kinds of features respectively. Last, we used hyperparameter tuning to improve the models.
 
+NLP(Natural Lanuage Processing) is a very useful topic. But it is also a CPU intensive and time consuming job. We can only make a prototype in this project because of the limitation of computational power and time. 
+
+We can improve the models by following ways:  
+1. Train the models with bigger dataset and more data.   
+2. Set ngram_range to (1,2) and (1,3) to extract better features.
+3. Use Summary texts as well as review texts to predict the rating acores.
+4. Create the hyperparameter grid with more parameters and bigger search space.
 
 
 
