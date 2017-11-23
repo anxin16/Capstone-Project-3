@@ -489,11 +489,17 @@ def train_predict_evaluate_model(classifier,
     return test_predictions    
 ```
 
-Now we train, predict, and evaluate above classification models for all the different types of features. The following form is the result we get:
+Now we train, predict, and evaluate above classification models using all the different types of features. Below is the result form we get from recall values:
 
-   ![Evaluate-result-form](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Evaluate-result-form.png)
+![Evaluate-result-form](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Evaluate-result-form.png)
 
+From the above form, we can get following results:  
+1. Among the four kinds for features, tfidf is the best feature. It can get the highest accuracy while save time for training models. And bag of words is the second best feature. tfidf weighted averaged word vector is the worst feature because of the lowest accuracy and longest training time.   
+2. Among the five cllasification models, Logistic Regression is the best one and Linear Support Vector Classification is the second best one. Random Forest Classifier is the worst one.  
+3. Among the five levels ratings, rating 5 have the best predicting result while rating 1 have the worst result. Accuracy of predicting rating 5 is very high for each model. But accuracy of predicting rating 1, 2 and 3 are very low. One reason for this may be that most records have rating 5 and least records have rating 1. More training data can get better model.
+4. The models marked in pink color are relatively best models. We will work on them with hyperparameter Tuning.
 
+### 3. Confusion Matrix of Models
 
 ```python
 
