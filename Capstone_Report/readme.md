@@ -625,29 +625,22 @@ No. | Models | Accuracy before tuning | Accuracy after tuning | Improved accurac
 5 | SGD Classifier using Tfidf features | 0.655 | 0.657 | 0.002
 6 | Random Forest Classifier using Averaged word vector features | 0.600 | 0.637 | 0.037
 
+From the tuning result, we can see that most models' accuracy are improved by 0.2~0.7%, especially for RFC, accuracy improved by 3.7%. So hyperparameter tuning is a good method to improve the models. Also, after hyperparameter tuning, we get 6 models with about 66% accuracy.
+
+## VI. Results and Discussion
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```python
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
