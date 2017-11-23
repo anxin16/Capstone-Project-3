@@ -664,14 +664,3 @@ http://cs229.stanford.edu/proj2014/Jordan%20Rodak,%20Minna%20Xiao,%20Steven%20Lo
 
 6. Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text  
 http://i.stanford.edu/~julian/pdfs/recsys13.pdf
-
-
-
-
-
-
-
-
-```python
-
-```
