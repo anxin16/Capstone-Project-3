@@ -66,18 +66,16 @@ Average rating score:  4.245
 
 * __Subset data__
 
-Because text analysis is very time cosumming, we just use subset of the dataset to go through our process of text normalization, feature engineering and machine learning. When all are set, we can use whole dataset or other bigger dataset to get better model.
+Because text analysis is very time cosumming, we just use subset of the dataset to go through our process of text normalization, feature engineering and machine learning. 
 
-So we select reviews before 2012 as our sub dataset. There are 16434 records in it. 
-
-Distribution of the ratings is as following:
+So we select the first 30,000 reviews as our sub dataset. Distribution of the ratings is as following:
 ```
 Rating
-1      690
-2      861
-3     1518
-4     3363
-5    10002
+1     1070
+2     1541
+3     2842
+4     6042
+5    18505
 ```
 
 ## III. Pre-processing —— Text Normalization
