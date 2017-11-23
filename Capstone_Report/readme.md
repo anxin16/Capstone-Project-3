@@ -505,12 +505,13 @@ A _confusion matrix_ is a table that is often used to describe the performance o
 Followings are the confusion matrixs for the above marked models:
 
 **3.1 Logistic Regression using Bag of words features:**  
-    1   2    3    4     5
-1  54  42   19   20    79
-2  20  62   60   47   119
-3  21  45  129  155   219
-4   8  16   93  318   773
-5   9  11   77  245  3359
+  |  1  |  2  |  3  |  4  |   5
+---|---|---|---|---|---
+1 | 54 | 42 |  19 |  20  |  79
+2 | 20 | 62 |  60 |  47  | 119
+3 | 21 | 45 | 129 | 155  | 219
+4 |  8 | 16 |  93 | 318  | 773
+5 |  9 | 11 |  77 | 245  | 3359
 
 **3.2 Logistic Regression with Tfidf features:**  
     1   2   3    4     5
