@@ -303,6 +303,11 @@ def bow_extractor(corpus, ngram_range=(1,1)):
 TF-IDF stands for Term Frequency-Inverse Document Frequency, a combination of two metrics: *term frequency* and *inverse document frequency*.
 
 Mathematically, TF-IDF is the product of two metrics and can be represented as tfidf = tf x idf, where *term frequency*(tf) and *inverse-document frequency*(idf) represent the two metrics.
+
+![Avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Avg-wv.png)  
+
+where AVW(D) is the averaged word vector representation for document D, containing words w1, w2, ..., wn, and wv(w) is the word vector representation for the word w.
+
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -320,6 +325,11 @@ def tfidf_extractor(corpus, ngram_range=(1,1)):
 
 ### 3. Averaged Word Vectors
 In this technique, we will use an average weighted word vectorization scheme, where for each text document we will extract all the tokens of the text document, and for each token in the document we will capture the subsequent word vector if present in the vocabulary. We will sum up all the word vectors and divide the result by the total number of words matched in the vocabulary to get a final resulting averaged word vector representation for the text document.
+
+![tfidf-avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/tfidf-avg-wv.png)  
+
+where TWA(D) is the TF-IDF weighted averaged word vector representation for document D, containing words w1, w2, ..., wn, where wv(w) is the word vector representation and tfidf(w) is the TF-IDF weight for the wordw.
+
 ```python
 import numpy as np    
 
