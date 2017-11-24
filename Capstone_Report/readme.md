@@ -302,7 +302,7 @@ def bow_extractor(corpus, ngram_range=(1,1)):
 ### 2. TF-IDF Model
 TF-IDF stands for Term Frequency-Inverse Document Frequency, a combination of two metrics: *term frequency* and *inverse document frequency*.
 
-Mathematically, TF-IDF is the product of two metrics and can be represented as $tfidf = tfxidf$, where *term frequency*(tf) and *inverse-document frequency*(idf) represent the two metrics.
+Mathematically, TF-IDF is the product of two metrics and can be represented as tfidf = tf x idf, where *term frequency*(tf) and *inverse-document frequency*(idf) represent the two metrics.
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 
