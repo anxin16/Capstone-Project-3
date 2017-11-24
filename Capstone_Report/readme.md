@@ -60,7 +60,7 @@ Average rating score:  4.245
 
 ![rating-fr](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-fr.png)
 
-* __Distribution of rating propotion__
+* __Distribution of rating proportion__
 
 ![rating-pro](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/rating-pro1.png)
 
