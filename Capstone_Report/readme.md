@@ -303,11 +303,6 @@ def bow_extractor(corpus, ngram_range=(1,1)):
 TF-IDF stands for Term Frequency-Inverse Document Frequency, a combination of two metrics: *term frequency* and *inverse document frequency*.
 
 Mathematically, TF-IDF is the product of two metrics and can be represented as tfidf = tf x idf, where *term frequency*(tf) and *inverse-document frequency*(idf) represent the two metrics.
-
-![Avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Avg-wv.png)  
-
-where AVW(D) is the averaged word vector representation for document D, containing words w1, w2, ..., wn, and wv(w) is the word vector representation for the word w.
-
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -326,10 +321,8 @@ def tfidf_extractor(corpus, ngram_range=(1,1)):
 ### 3. Averaged Word Vectors
 In this technique, we will use an average weighted word vectorization scheme, where for each text document we will extract all the tokens of the text document, and for each token in the document we will capture the subsequent word vector if present in the vocabulary. We will sum up all the word vectors and divide the result by the total number of words matched in the vocabulary to get a final resulting averaged word vector representation for the text document.
 
-![tfidf-avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/tfidf-avg-wv.png)  
-
-where TWA(D) is the TF-IDF weighted averaged word vector representation for document D, containing words w1, w2, ..., wn, where wv(w) is the word vector representation and tfidf(w) is the TF-IDF weight for the wordw.
-
+![Avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Avg-wv.png)  
+where AVW(D) is the averaged word vector representation for document D, containing words w1, w2, ..., wn, and wv(w) is the word vector representation for the word w.
 ```python
 import numpy as np    
 
@@ -359,6 +352,9 @@ def averaged_word_vectorizer(corpus, model, num_features):
 
 ### 4. TF-IDF Weighted Averaged Word Vectors
 Our previous vectorizer simply sums up all the word vectors pertaining to any document based on the words in the model vocabulary and calculates a simple average by dividing with the count of matched words. Now we use a new and novel technique of weighing each matched word vector with the word TF-TDF score and summing up all the word vectors for a document and dividing it by the sum of all the TF-IDF weights of the matched words in the document. This would basically give us a TF-IDF weighted averaged word vector for each document.
+
+![tfidf-avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/tfidf-avg-wv.png)    
+where TWA(D) is the TF-IDF weighted averaged word vector representation for document D, containing words w1, w2, ..., wn, where wv(w) is the word vector representation and tfidf(w) is the TF-IDF weight for the wordw.
 ```python
 # Define function to compute tfidf weighted averaged word vector for a document
 def tfidf_wtd_avg_word_vectors(words, tfidf_vector, tfidf_vocabulary, model, num_features):
@@ -658,17 +654,19 @@ In this project, we did research with subset of the data in shoes and clothes ca
 1. How helpful is my review? Predicting review usefulness using machine learning  
 https://github.com/TancyKao/AmazonBookReviewProj
 
-2. Natural Language Processing with Python  
+2. Dipanjan Sarkar, _Text Analytics in Python_
+
+3. Natural Language Processing with Python  
 http://www.nltk.org/book/
 
-3. Modern NLP in Python  
+4. Modern NLP in Python  
 https://github.com/skipgram/modern-nlp-in-python/blob/master/executable/Modern_NLP_in_Python.ipynb
 
-4. Predicting ratings of Amazon reviews - Techniques for imbalanced datasets  
+5. Predicting ratings of Amazon reviews - Techniques for imbalanced datasets  
 https://matheo.ulg.ac.be/bitstream/2268.2/2707/4/Memoire_MarieMartin_s112740.pdf
 
-5. Predicting Helpfulness Ratings of Amazon Product Reviews  
+6. Predicting Helpfulness Ratings of Amazon Product Reviews  
 http://cs229.stanford.edu/proj2014/Jordan%20Rodak,%20Minna%20Xiao,%20Steven%20Longoria,%20Predicting%20Helpfulness%20Ratings%20of%20Amazon%20Product%20Reviews.pdf
 
-6. Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text  
+7. Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text  
 http://i.stanford.edu/~julian/pdfs/recsys13.pdf
