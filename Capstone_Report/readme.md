@@ -639,7 +639,7 @@ NLP(Natural Lanuage Processing) is a very useful topic. But it is also a CPU int
 We can improve the models by following attempts:  
 1. Train the models with bigger dataset and more data.   
 2. Set ngram_range to (1,2) and (1,3) to extract better features.
-3. Use Summary texts as well as review texts to predict the rating acores.
+3. Use Summary texts as well as review texts to predict the rating scores.
 4. Create the hyperparameter grid with more parameters and bigger search space.
 
 ## VII. Future Work
@@ -651,22 +651,15 @@ In this project, we did research with subset of the data in shoes and clothes ca
 4. Use advanced modern NLP tech in text preprocessing.
 
 # Reference
-1. How helpful is my review? Predicting review usefulness using machine learning  
-https://github.com/TancyKao/AmazonBookReviewProj
+1. [How helpful is my review? Predicting review usefulness using machine learning](https://github.com/TancyKao/AmazonBookReviewProj) 
 
-2. Dipanjan Sarkar, _Text Analytics in Python_
+2. Dipanjan Sarkar, [_Text Analytics in Python_](https://github.com/dipanjanS/text-analytics-with-python)
 
-3. Natural Language Processing with Python  
-http://www.nltk.org/book/
+3. [Natural Language Processing with Python](http://www.nltk.org/book/)  
 
-4. Modern NLP in Python  
-https://github.com/skipgram/modern-nlp-in-python/blob/master/executable/Modern_NLP_in_Python.ipynb
+4. [Modern NLP in Python](https://github.com/skipgram/modern-nlp-in-python/blob/master/executable/Modern_NLP_in_Python.ipynb)  
+5. [Predicting ratings of Amazon reviews - Techniques for imbalanced datasets](https://matheo.ulg.ac.be/bitstream/2268.2/2707/4/Memoire_MarieMartin_s112740.pdf)  
 
-5. Predicting ratings of Amazon reviews - Techniques for imbalanced datasets  
-https://matheo.ulg.ac.be/bitstream/2268.2/2707/4/Memoire_MarieMartin_s112740.pdf
+6. [Predicting Helpfulness Ratings of Amazon Product Reviews](http://cs229.stanford.edu/proj2014/Jordan%20Rodak,%20Minna%20Xiao,%20Steven%20Longoria,%20Predicting%20Helpfulness%20Ratings%20of%20Amazon%20Product%20Reviews.pdf)  
 
-6. Predicting Helpfulness Ratings of Amazon Product Reviews  
-http://cs229.stanford.edu/proj2014/Jordan%20Rodak,%20Minna%20Xiao,%20Steven%20Longoria,%20Predicting%20Helpfulness%20Ratings%20of%20Amazon%20Product%20Reviews.pdf
-
-7. Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text  
-http://i.stanford.edu/~julian/pdfs/recsys13.pdf
+7. [Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text](http://i.stanford.edu/~julian/pdfs/recsys13.pdf)  
