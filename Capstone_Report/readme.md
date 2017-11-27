@@ -318,7 +318,29 @@ def tfidf_extractor(corpus, ngram_range=(1,1)):
     return vectorizer, features
 ```
 
-### 3. Averaged Word Vectors
+### 3. Advanced Word Vectorization Models
+There are various approaches to creating more advanced word vectorization models for extracting features from text data. We will try a couple of them that use Google’s popular word2vec algorithm. The word2vec model, released in 2013 by Google, is a neural network–based implementation that learns distributed vector representations of words based on continuous Bag of Words and skip-gram–based architectures. The word2vec framework is much faster than other neural network–based implementations and does not require manual labels to create meaningful representations among words. 
+
+In this project, we use the gensim library in our implementation, which is Python implementation for word2vec that provides several high-level interfaces for easily building these models. The basic idea is to provide a corpus of documents as input and get feature vectors for them as output. Internally, it constructs a vocabulary based on the input text documents and learns vector representations for words based on various techniques mentioned earlier, and once this is complete, it builds a model that can be used to extract word vectors for each word in a document. Using various techniques like average weighting or tfidf weighting, we can compute the averaged vector representation of a document using its word vectors.
+```python
+import gensim
+
+# build word2vec model                   
+model = gensim.models.Word2Vec(tokenized_train,
+                               size=5000,
+                               window=100,
+                               min_count=2,
+                               sample=1e-3)
+```
+Here we use the following parameters when we build model from the sample training corpus:  
+* size: This parameter is used to set the size or dimension for the word vectors and can range from tens to thousands. 
+* window: This parameter is used to set the context or window size. which specifies the length of the window of words that should be considered for the algorithm to take into account as context when training.  
+* min_count: This parameter specifies the minimum word count needed across the corpus for the word to be considered in the vocabulary. This helps in removing very specific words that may not have much significance because they occur very rarely in the documents.  
+* sample: This parameter is used to downsample effects of occurrence of frequent words. Values between 0.01 and 0.0001 are usually ideal.
+
+After we build the model, we will define and implement two techniques of combining word vectors together in text documents based on certain weighing schemes.
+
+### 3.1 Averaged Word Vectors
 In this technique, we will use an average weighted word vectorization scheme, where for each text document we will extract all the tokens of the text document, and for each token in the document we will capture the subsequent word vector if present in the vocabulary. We will sum up all the word vectors and divide the result by the total number of words matched in the vocabulary to get a final resulting averaged word vector representation for the text document.
 
 ![Avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Avg-wv.png)  
@@ -350,7 +372,7 @@ def averaged_word_vectorizer(corpus, model, num_features):
     return np.array(features)
 ```
 
-### 4. TF-IDF Weighted Averaged Word Vectors
+### 3.2 TF-IDF Weighted Averaged Word Vectors
 Our previous vectorizer simply sums up all the word vectors pertaining to any document based on the words in the model vocabulary and calculates a simple average by dividing with the count of matched words. Now we use a new and novel technique of weighing each matched word vector with the word TF-TDF score and summing up all the word vectors for a document and dividing it by the sum of all the TF-IDF weights of the matched words in the document. This would basically give us a TF-IDF weighted averaged word vector for each document.
 
 ![tfidf-avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/tfidf-avg-wv.png)    
