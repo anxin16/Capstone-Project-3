@@ -149,7 +149,7 @@ def tokenize_text(text):
 ```
 
 ### 4. Removing Stopwords
-Stopwords are words that have little or no significance. They are usually removed from text during processing so as to retain words having maximum significance and context. Stopwords are usually words that end up occurring the most if you aggregated any corpus of text based on singular tokens and checked their frequencies. Words like a, the , me , and so on are stopwords.
+Stopwords are words that have little or no significance. They are usually removed from text during processing so as to retain words having maximum significance and context. Stopwords are usually words that end up occurring the most if you aggregated any corpus of text based on singular tokens and checked their frequencies. Words like a, the, me, and so on are stopwords.
 ```python
 from nltk.corpus import stopwords
 # In Python, searching a set is much faster than searching a list, 
