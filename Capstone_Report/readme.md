@@ -353,7 +353,7 @@ After we build the model, we will define and implement two techniques of combini
 In this technique, we will use an average weighted word vectorization scheme, where for each text document we will extract all the tokens of the text document, and for each token in the document we will capture the subsequent word vector if present in the vocabulary. We will sum up all the word vectors and divide the result by the total number of words matched in the vocabulary to get a final resulting averaged word vector representation for the text document.
 
 ![Avg-wv](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/Avg-wv.png)  
-where AVW(D) is the averaged word vector representation for document D, containing words w1, w2, ..., wn, and wv(w) is the word vector representation for the word w.
+where AWV(D) is the averaged word vector representation for document D, containing words w1, w2, ..., wn, and wv(w) is the word vector representation for the word w.
 ```python
 import numpy as np    
 
