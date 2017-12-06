@@ -303,6 +303,15 @@ def bow_extractor(corpus, ngram_range=(1,1)):
 TF-IDF stands for Term Frequency-Inverse Document Frequency, a combination of two metrics: *term frequency* and *inverse document frequency*.
 
 Mathematically, TF-IDF is the product of two metrics and can be represented as tfidf = tf x idf, where *term frequency*(tf) and *inverse-document frequency*(idf) represent the two metrics.
+
+*Term frequency* denoted by __tf__ is what we had computed in the Bag of Words model. Term frequency in any document vector is denoted by the raw frequency value of that term in a particular document.
+
+*Inverse document frequency* denoted by __idf__ is the inverse of the document frequency for each term. It is computed by dividing the total number of documents in our corpus by the document frequency for each term and then applying logarithmic scaling on the result. In our implementation we will be adding 1 to the document frequency for each term just to indicate that we also have one more document in our corpus that essentially has every term in the vocabulary. This is to prevent potential division-by-zero errors and smoothen the inverse document frequencies. We also add 1 to the result of our idf
+computation to avoid ignoring terms completely that might have zero idf.
+
+![tfidf](https://github.com/anxin16/Capstone-Project-3/blob/master/Figures/tfidf.png)  
+where idf(t) represents the idf for the term t, C represents the count of the total number of documents in our corpus, and df(t) represents the frequency of the number of documents in which the term t is present.
+
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 
