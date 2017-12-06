@@ -129,7 +129,7 @@ One important task in text normalization involves removing unnecessary and speci
 # Define the function to remove special characters
 def remove_characters(text):
     text = text.strip()
-    PATTERN = '[^a-zA-Z0-9 ]' # only extract alpha-numeric characters
+    PATTERN = '[^a-zA-Z ]' # only extract alpha characters
     filtered_text = re.sub(PATTERN, '', text)
     return filtered_text
 ```
