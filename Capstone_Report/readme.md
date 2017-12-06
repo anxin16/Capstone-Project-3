@@ -137,7 +137,7 @@ def remove_characters(text):
 ### 3. Tokenizing Text
 Tokenization can be defined as the process of breaking down or splitting textual data into smaller meaningful components called tokens.
 
-**Sentence tokenization** is the process of splitting a text corpus into sentences that act as the first level of tokens which the corpus is comprised of. This is also known as sentence segmentation , because we try to segment the text into meaningful sentences.
+**Sentence tokenization** is the process of splitting a text corpus into sentences that act as the first level of tokens which the corpus is comprised of. This is also known as sentence segmentation, because we try to segment the text into meaningful sentences.
 
 **Word tokenization** is the process of splitting or segmenting sentences into their constituent words. A sentence is a collection of words, and with tokenization we essentially split a sentence into a list of words that can be used to reconstruct the sentence.
 ```python
