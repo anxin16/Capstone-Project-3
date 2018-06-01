@@ -16,7 +16,7 @@ However, many product reviews (from other platforms than Amazon) are not accompa
 
 The purpose of this project is to develop models that are able to predict the user rating from the text review. While our model is built to work with any kind of product, the review dataset provided by Amazon only includes Clothing and Shoes reviews.
 
-## II. REPORT
+## II. RESULT
 [Report](https://github.com/anxin16/Capstone-Project-3/tree/master/Capstone_Report)
 
 [Code](https://github.com/anxin16/Capstone-Project-3/blob/master/Capstone_Report/Amazon-Review_2-30k.ipynb)
